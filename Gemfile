@@ -46,3 +46,5 @@ end
 gem 'execjs'
 gem 'therubyracer'
 gem 'json'
+gem 'delayed_job_active_record'
+gem 'daemons'

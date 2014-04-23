@@ -5,50 +5,27 @@ class CapthuritsController < ApplicationController
   before_action :set_capthurit, only: [:show, :edit, :update, :destroy]
 
   def follow
-	#there are two remaining interesting problems to solve...
-	#Problem 1: We want to follow non-stop
-	#Problem 2: We want to dump on command
 	x = 1
 	url = URI.parse('http://bbcwssc.ic.llnwd.net/')
 	Net::HTTP.start(url.host, url.port) do |http|       
-        #f1 = open("/var/capthurits/saved_stream1.mp3", "w+b")
-	#f2 = open("/var/capthurits/saved_stream2.mp3", "w+b")
-	#f3 = open("/var/capthurits/saved_stream3.mp3", "w+b")
-	#f4 = open("/var/capthurits/saved_stream4.mp3", "w+b")
 	randomstring = ('A'..'Z').to_a.shuffle[0,6].join
 	filepath = "/var/capthurits/".to_s + randomstring.to_s + ".mp3".to_s
-	#puts filepath
 	f5 = open(filepath, "w+b")
 	buffer = Array.new(240)
         begin
             http.request_get('/stream/bbcwssc_mp1_ws-eieuk') do |resp|              
             resp.read_body do |segment|
-                #f.write(segment)
 		buffer[x] = segment
-		#puts "inner x=".to_s + x.to_s
-		#puts ('A'..'Z').to_a.shuffle[0,6].join
 		x = x + 1
 		break if x == 240              
             end
 	    puts "outer x=".to_s + x.to_s
-	    #f1.write(buffer[2])
-	    #f2.write(buffer[3])
-            #f3.write(buffer[4])
-            #f4.write(buffer[5])
-            #f5.write(buffer[2])
-            #f5.write(buffer[3])
-            #f5.write(buffer[4])
-            #f5.write(buffer[5])
             for i in 2..240
 		f5.write(buffer[i])
 	    end
 	    break if x == 240
             end
         ensure
-            #f1.close()
-	    #f2.close()
-            #f3.close()
-            #f4.close()
             f5.close()
         end     
     end
@@ -57,6 +34,8 @@ class CapthuritsController < ApplicationController
   # GET /capthurits
   # GET /capthurits.json
   def index
+    me = david.new
+    me.greets
     @capthurits = Capthurit.all
   end
 
