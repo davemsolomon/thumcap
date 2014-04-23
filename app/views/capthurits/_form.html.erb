@@ -1,0 +1,29 @@
+<%= form_for(@capthurit) do |f| %>
+  <% if @capthurit.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@capthurit.errors.count, "error") %> prohibited this capthurit from being saved:</h2>
+
+      <ul>
+      <% @capthurit.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :filename %><br>
+    <%= f.text_field :filename %>
+  </div>
+  <div class="field">
+    <%= f.label :stationname %><br>
+    <%= f.text_field :stationname %>
+  </div>
+  <div class="field">
+    <%= f.label :capthurstart %><br>
+    <%= f.datetime_select :capthurstart %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

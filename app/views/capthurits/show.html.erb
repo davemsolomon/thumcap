@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Filename:</strong>
+  <%= @capthurit.filename %>
+</p>
+
+<p>
+  <strong>Stationname:</strong>
+  <%= @capthurit.stationname %>
+</p>
+
+<p>
+  <strong>Capthurstart:</strong>
+  <%= @capthurit.capthurstart %>
+</p>
+
+<%= link_to 'Edit', edit_capthurit_path(@capthurit) %> |
+<%= link_to 'Back', capthurits_path %>

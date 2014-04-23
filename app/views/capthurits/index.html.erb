@@ -1,0 +1,33 @@
+<h1>Listing capthurits</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Filename</th>
+      <th>Stationname</th>
+      <th>Capthurstart</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+
+  <tbody>
+    <% @capthurits.each do |capthurit| %>
+      <tr>
+        <td><%= capthurit.filename %></td>
+        <td><%= capthurit.stationname %></td>
+        <td><%= capthurit.capthurstart %></td>
+        <td><%= link_to 'Show', capthurit %></td>
+        <td><%= link_to 'Edit', edit_capthurit_path(capthurit) %></td>
+        <td><%= link_to 'Destroy', capthurit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td> <%= link_to 'Howdy', capthurit, method: :hello, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Capthurit', new_capthurit_path %>

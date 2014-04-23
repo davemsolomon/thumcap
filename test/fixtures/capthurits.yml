@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  filename: MyString
+  stationname: MyString
+  capthurstart: 2014-04-19 20:39:55
+
+two:
+  filename: MyString
+  stationname: MyString
+  capthurstart: 2014-04-19 20:39:55

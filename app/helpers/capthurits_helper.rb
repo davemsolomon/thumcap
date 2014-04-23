@@ -1,0 +1,2 @@
+module CapthuritsHelper
+end
